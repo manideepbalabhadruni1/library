@@ -1,0 +1,186 @@
+/* Reset and base styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(238, 211, 199);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container for the entire login layout */
+.login-container {
+  display: flex;
+  width: 1000px;
+  height: 500px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+/* Side image boxes */
+.side-image {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Rounded corners only on appropriate sides */
+.side-image.left img {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.side-image.right img {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Center login form box */
+.login-box {
+  background-color: #fffaf3;
+  width: 400px;
+  height: 500px;
+  padding: 100px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+
+/* Logo and title */
+.login-title {
+  color: rgb(230, 100, 0);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.login-title img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Form layout */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(230, 100, 0);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 93%;
+  padding: 10px 10px;
+  border-radius: 3px;
+  border: 1px solid rgb(230, 100, 0);
+  font-size: 14px;
+}
+
+/* Login button */
+.login-btn {
+  padding: 10px;
+  background: linear-gradient(to bottom, rgb(255, 165, 0), rgb(204, 102, 0));
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background: linear-gradient(to bottom, rgb(255, 140, 0), rgb(180, 90, 0));
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  margin-top: 10px;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* Forgot Password Form */
+.forgot-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-form input {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.forgot-form button {
+  padding: 10px;
+  background: linear-gradient(to bottom, rgb(255, 165, 0), rgb(204, 102, 0));
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.forgot-form button:hover {
+  background: linear-gradient(to bottom, rgb(255, 140, 0), rgb(180, 90, 0));
+}
+
+/* Success and Error Messages */
+.success-message {
+  color: green;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+.login-btn + .login-btn {
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+

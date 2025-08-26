@@ -1,0 +1,408 @@
+/* Main Container */
+.student-login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #eef1f5; /* Light background for the whole page */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50; /* Dark blue-grey */
+  height: 100vh; /* Full height */
+  color: #ecf0f1; /* Light grey text */
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.sidebar.collapsed { /* Optional: if you implement collapsing sidebar */
+  width: 60px;
+}
+
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.8em; /* Slightly larger */
+  font-weight: bold;
+  border-bottom: 1px solid #34495e; /* Separator line */
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Allows menu to fill space if needed */
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-left: 3px solid transparent; /* For active indicator */
+}
+
+.sidebar-menu li:hover {
+  background-color: #34495e; /* Darker shade on hover */
+}
+
+.sidebar-menu li.active {
+  background-color: #1abc9c; /* Teal for active item */
+  color: #fff;
+  border-left: 3px solid #fff; /* White indicator for active */
+}
+
+.sidebar-menu li svg { /* Targeting react-icons */
+  margin-right: 12px;
+  font-size: 1.2em;
+}
+
+.sidebar-menu li span {
+  font-size: 1em; /* Adjusted font size */
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;
+  background-color: #f4f6f9; /* Lighter background for content area */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling for content overflow */
+  display: flex; /* Key Change: Use flexbox */
+  flex-direction: column; /* Key Change: Stack children vertically */
+  gap: 20px; /* Key Change: Space between navbar and module-container */
+}
+
+/* Navbar */
+.navbar {
+  background: #900c3f; /* Original pink */
+  color: white;
+  padding: 12px 25px; /* Slightly more padding */
+  font-size: 1.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  width: 100%; /* Ensure it takes full width of its flex context */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.welcome-text {
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: #c70039; /* Darker pink */
+  border: none;
+  padding: 8px 18px; /* Adjusted padding */
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #7a0a34; /* Even darker on hover */
+}
+
+/* Module Container (wrapper for dynamic content) */
+.module-container {
+  width: 100%;
+  flex-grow: 1; /* Allow it to take available vertical space if needed */
+  display: flex; /* To help manage the content inside, e.g. .dashboard or .module-card.full-width */
+  flex-direction: column;
+}
+
+/* Dashboard Layout (grid of cards) */
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start; /* Align cards to the start */
+  width: 100%;
+}
+
+/* Module Cards (for dashboard and full-width views) */
+.module-card {
+  background: white;
+  padding: 25px; /* Increased padding */
+  border-radius: 10px; /* Softer radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Softer shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Styles for small cards in the dashboard view */
+.dashboard .module-card {
+  flex: 1 1 220px; /* Grow, shrink, with a base width */
+  max-width: 280px; /* Max width for dashboard cards */
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dashboard .module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.module-card .module-icon {
+  font-size: 2.5em; /* Larger icon */
+  color: #007bff; /* Blue icon */
+  margin-bottom: 15px;
+}
+
+.module-card .module-title {
+  font-weight: 600; /* Bolder */
+  font-size: 1.1em; /* Slightly larger */
+  color: #333;
+}
+
+/* Styles for .module-card when it's displayed as full-width content */
+.module-card.full-width {
+  width: 100%;
+  max-width: none; /* Override max-width from dashboard card style */
+  flex: 1; /* Allow it to take up space if .module-container is flex */
+  text-align: left; /* Align text to the left for forms/lists */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Make direct children stretch full width */
+}
+
+.module-card.full-width h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  text-align: center; /* Center section titles */
+}
+
+/* Inputs, Textareas, Selects, Buttons inside ANY Module Card */
+.module-card input[type="text"],
+.module-card input[type="date"],
+.module-card input[type="number"],
+.module-card textarea,
+.module-card select {
+  width: 100%; /* Take full width of their alignment context */
+  max-width: 450px; /* Max width for form elements in full-width view */
+  padding: 12px;
+  margin-bottom: 15px; /* Consistent bottom margin */
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  box-sizing: border-box;
+  background-color: #fdfdfd;
+}
+.module-card.full-width input[type="text"],
+.module-card.full-width input[type="date"],
+.module-card.full-width input[type="number"],
+.module-card.full-width textarea,
+.module-card.full-width select {
+    align-self: flex-start; /* For full-width cards, align inputs to the start if parent is align-items:stretch */
+}
+
+
+.module-card textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.module-card button {
+  padding: 12px 25px;
+  background-color: #007bff; /* Blue */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  align-self: flex-start; /* Align button to the left in full-width card */
+  margin-top: 10px; /* Add some space above button */
+}
+
+.module-card button:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+/* Lists (ul) inside Module Cards */
+.module-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0; /* Add bottom margin to lists */
+  width: 100%;
+}
+
+.module-card li { /* General list item styling */
+  background-color: #f9f9f9; 
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  font-size: 0.95em;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
+/* Specific styles for detailed book list in "View Books" */
+.book-list-detailed {
+  list-style: none;
+  padding: 0;
+}
+
+.book-item-detailed {
+  background-color: #ffffff; /* White background for each item */
+  border: 1px solid #e0e0e0; /* Slightly darker border */
+  border-radius: 8px;
+  padding: 15px 20px; /* More padding */
+  margin-bottom: 12px; /* Space between items */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.07); /* Subtle shadow */
+}
+
+.book-item-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px; /* Space below main info */
+}
+
+.book-item-main-info strong {
+  font-size: 1.15em; /* Larger title */
+  color: #2c3e50; /* Dark blue-grey */
+}
+.book-item-main-info .book-author {
+  font-size: 0.9em;
+  color: #555;
+  margin-left: 5px;
+}
+
+.book-item-main-info .status { /* Generic status class */
+  padding: 6px 12px; /* Slightly more padding */
+  border-radius: 16px; /* Pill shape */
+  font-size: 0.85em;
+  font-weight: 600; /* Bolder status text */
+  text-transform: uppercase;
+  min-width: 90px; /* Ensure consistent width */
+  text-align: center;
+}
+.book-item-main-info .status-available { /* Specific styling for available */
+  background-color: #e6ffed; /* Light green background */
+  color: #1e8e3e; /* Darker green text */
+  border: 1px solid #a7d7ae; /* Subtle border */
+}
+.book-item-main-info .status-unavailable { /* Specific styling for unavailable */
+  background-color: #ffebee; /* Light red background */
+  color: #c62828; /* Darker red text */
+  border: 1px solid #f1b5b8; /* Subtle border */
+}
+
+.book-item-extra-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Responsive grid */
+  gap: 10px; /* Gap between items */
+  font-size: 0.9em;
+  color: #444; /* Slightly darker text for details */
+}
+
+.book-item-extra-info span {
+  background-color: #eef1f5; /* Light grey background for detail pills */
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #dfe3e8;
+}
+
+
+/* Tables inside Module Cards */
+.module-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.module-card th, .module-card td {
+  border: 1px solid #ddd;
+  padding: 10px 12px; /* Adjusted padding for tables */
+  text-align: left;
+  font-size: 0.9em;
+  vertical-align: middle; /* Better alignment */
+}
+
+.module-card th {
+  background-color: #f0f2f5; /* Light grey for table headers */
+  font-weight: 600; /* Bolder table headers */
+  color: #333;
+}
+.module-card tbody tr:nth-child(even) {
+  background-color: #f9fafb; /* Subtle striping for table rows */
+}
+
+.module-card .borrow-info {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+.module-card .borrow-info h3 {
+    margin-bottom: 10px;
+    color: #007bff; /* Blue for success message header */
+}
+.module-card .borrow-info h3 svg {
+  margin-right: 8px;
+}
+/* Status indicators for tables (e.g. My Borrowed Books) */
+.status-borrowed {
+  color: #e67e22; /* Orange for borrowed */
+  font-weight: bold;
+}
+.status-returned {
+  color: #27ae60; /* Green for returned */
+  font-weight: bold;
+}
+
+
+/* Generic input/button styles (fallback or for elements outside cards) */
+input, textarea, select { 
+  display: block;
+  margin: 10px 0; /* Align to start, not center */
+  padding: 10px;
+  width: 100%; /* Default width, constrained by parent */
+  max-width: 400px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box; /* Important for width consistency */
+}
+.module-card.full-width > input,
+.module-card.full-width > textarea,
+.module-card.full-width > select {
+    align-self: flex-start; /* ensure these elements don't stretch if their parent is align-items: stretch */
+}
+
+
+button { 
+  padding: 10px 20px;
+  background-color: #5cb85c; 
+  color: white;
+  border: none;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.module-card.full-width > button {
+    align-self: flex-start;
+}
+
+
+button:hover { 
+  background-color: #4cae4c; 
+}
