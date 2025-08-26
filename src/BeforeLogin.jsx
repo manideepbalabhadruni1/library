@@ -30,7 +30,11 @@ function BeforeLogin() {
       {/* Navbar */}
       <header className="navbar">
         <div className="logo-container">
-          <img src="/mhs.jpg" alt="MHS Logo" className="mhs-logo" />
+          <img
+            src={`${process.env.PUBLIC_URL}/mhs.jpg`}
+            alt="MHS Logo"
+            className="mhs-logo"
+          />
         </div>
         <div className="nav-buttons">
           <button className="login-button" onClick={handleLoginClick}>
@@ -52,26 +56,43 @@ function BeforeLogin() {
             path="/"
             element={
               <div className="center-content">
-                <div className="lms-center-circle">LIBRARY MANAGEMENT SYSTEM</div>
+                <div className="lms-center-circle">
+                  LIBRARY MANAGEMENT SYSTEM
+                </div>
                 <div className="modules-grid">
                   <div className="module" onClick={handleLoginClick}>
-                    <img src="/bok.jpg" alt="My Books" />
+                    <img
+                      src={`${process.env.PUBLIC_URL}/bok.jpg`}
+                      alt="My Books"
+                    />
                     <div>My Books</div>
                   </div>
                   <div className="module" onClick={handleLoginClick}>
-                    <img src="/lib.webp" alt="Library" />
+                    <img
+                      src={`${process.env.PUBLIC_URL}/lib.webp`}
+                      alt="Library"
+                    />
                     <div>Library</div>
                   </div>
                   <div className="module" onClick={handleLoginClick}>
-                    <img src="/borrow.jpg" alt="Borrow" />
+                    <img
+                      src={`${process.env.PUBLIC_URL}/borrow.jpg`}
+                      alt="Borrow"
+                    />
                     <div>Borrow</div>
                   </div>
                   <div className="module" onClick={handleLoginClick}>
-                    <img src="/return.jpg" alt="Return" />
+                    <img
+                      src={`${process.env.PUBLIC_URL}/return.jpg`}
+                      alt="Return"
+                    />
                     <div>Return</div>
                   </div>
                   <div className="module" onClick={handleLoginClick}>
-                    <img src="/feed.jpg" alt="Feedback" />
+                    <img
+                      src={`${process.env.PUBLIC_URL}/feed.jpg`}
+                      alt="Feedback"
+                    />
                     <div>Feedback</div>
                   </div>
                 </div>
